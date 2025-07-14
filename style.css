@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap; /*? pour que les elements s'empile en format moble */
+    justify-content: center;
+    align-items: center;
+    border-bottom: 5px solid #6f6f6f;
+}
+
+ /*?  justify-content: pour aligner horizontalement , */
+ /*?  align-items : pour aligner verticalement , */
+
+nav h1 {
+    color: #717171;
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 30px;
+}
+
+nav .onglets {
+    margin-top: 3px;
+    margin-left: 300px;
+}
+
+nav .onglets a {
+    text-decoration: none;
+    color: #000;
+    margin-right: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #000;
+}
+
+header div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('images/cafe.header.jpg');
+    background-size: cover; /*? couvrir la totalite du header*/
+    color: #fff;
+    padding: 40px;
+}
+
+header div h2 {
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 50px;
+}
+
+header div h4 {
+    margin-top: -20px;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+
+header div button {
+    padding: 10px 20px;
+    border: none;
+    background-color: rgba(37, 20, 20, 0.726);
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Playfair Display', sans-serif;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 3px;
+}
+
+.main{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main .content .card {
+    display: flex;
+    flex-wrap: wrap; /*? si la resolution ne le permet pas les element vont s'emplilé */
+}
+
+.main .content .card .right img{
+    width: 400px;
+    height: 300px;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 680px){  /*? Agiir si taille d ecran nnferieur a 680px */
+    nav .onglets {
+        margin-left: 0px;
+        margin-bottom: 20px;
+    }
+
+    header div h4 {
+        border: none;
+    }
+
+}
