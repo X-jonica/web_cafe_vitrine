@@ -1,65 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav>
-        <h1>Café</h1>
-        <div class="onglets">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link rel="stylesheet" href="style.css" />
+   </head>
+   <body>
+      <nav>
+         <h1>Café</h1>
+         <div class="onglets">
             <a href="">Home</a>
-            <a href="#products">Nos produits</a>
-            <a href="">Contact</a>
-        </div>
-    </nav> 
+            <a href="#products">Nos cafés</a>
+            <a href="#localisation">Localisation</a>
+            <a href="#contact">Contact</a>
+         </div>
+      </nav>
 
-    <header>
-        <div class="header-element">
-            <h2>Café</h2>
+      <header>
+         <div class="header-element">
+            <h2>Café MILAY</h2>
             <h4>LE MEILLEUR RESTAURANT POUR DE CAFE</h4>
-            <button>Parcourir</button>
-        </div>
-    </header>
+            <button>Découvrir</button>
+         </div>
+      </header>
 
-    <section class="main" id="products">
-        <!-- socker tous nos elemets -->
-        <div class="content"> 
+      <section class="main" id="products">
+         <h4>Nos cafés</h4>
+         <!-- socker tous nos elemets -->
+         <div class="content">
             <!-- pour la carte  -->
             <div class="card">
-                <div class="left">
-                    <h3>Café au lait</h3>
-                    <p>Savourez la douceur d’un café subtilement mélangé à du lait chaud, idéal pour une pause cocooning. Ce grand classique vous enveloppe de chaleur et de réconfort à chaque gorgée.</p>
-                </div>
-                <div class="right">
-                    <img src="images/cafe_au_lait.jpg" alt="café au lait">
-                </div>
+               <div class="left">
+                  <h3>Café au lait</h3>
+                  <p>
+                     Savourez la douceur d’un café subtilement mélangé à du lait
+                     chaud, idéal pour une pause cocooning. Ce grand classique
+                     vous enveloppe de chaleur et de réconfort à chaque gorgée.
+                  </p>
+                  <p class="price">500 Ar</p>
+               </div>
+               <div class="right">
+                  <img src="images/cafe_au_lait.jpg" alt="café au lait" />
+               </div>
             </div>
 
             <!-- pour la carte  -->
             <div class="card">
-                <div class="left">
-                    <h3>Espresso</h3>
-                    <p>Offrez-vous un concentré d’arômes puissants dans une petite tasse, parfait pour un coup de boost immédiat. Ce café intense est le choix préféré des vrais amateurs de caractère.</p>
-                </div>
-                <div class="right">
-                    <img src="images/Espresso.jpg" alt="café au lait">
-                </div>
+               <div class="left">
+                  <h3>Espresso</h3>
+                  <p>
+                     Offrez-vous un concentré d’arômes puissants dans une petite
+                     tasse, parfait pour un coup de boost immédiat. Ce café
+                     intense est le choix préféré des vrais amateurs de
+                     caractère.
+                  </p>
+                  <p class="price">400 Ar</p>
+               </div>
+               <div class="right">
+                  <img src="images/Espresso.jpg" alt="café au lait" />
+               </div>
             </div>
 
             <!-- pour la carte  -->
             <div class="card">
-                <div class="left">
-                    <h3>Café macchiato</h3>
-                    <p>Laissez-vous séduire par la finesse d’un espresso adouci d’une touche de mousse de lait légère. Ce café au goût équilibré ravira ceux qui recherchent une expérience délicate mais pleine de saveurs.</p>
-                </div>
-                <div class="right">
-                    <img src="images/Cafe_ macchiato.jpg" alt="café au lait">
-                </div>
+               <div class="left">
+                  <h3>Café macchiato</h3>
+                  <p>
+                     Laissez-vous séduire par la finesse d’un espresso adouci
+                     d’une touche de mousse de lait légère. Ce café au goût
+                     équilibré ravira ceux qui recherchent une expérience
+                     délicate mais pleine de saveurs.
+                  </p>
+                  <p class="price">300 Ar</p>
+               </div>
+               <div class="right">
+                  <img src="images/Cafe_ macchiato.jpg" alt="café au lait" />
+               </div>
             </div>
-        </div>
-    </section>
-</body>
+         </div>
+      </section>
+      <section class="position" id="localisation">
+         <h4>Où nous trouver ?</h4>
+         <div class="map">
+            <iframe
+               src="https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d2888.4641993424293!2d47.062642809345746!3d-21.47341246540165!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d-21.472832903325532!2d47.063827629923!5e1!3m2!1sfr!2smg!4v1752580296506!5m2!1sfr!2smg"
+               width="600"
+               height="450"
+               style="border: 0"
+               allowfullscreen=""
+               loading="lazy"
+               referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+         </div>
+      </section>
+
+      <footer>
+         <h4>Nos spécialités</h4>
+         <div class="specialites">
+            <div class="specialite">
+               <h5>Cappuccino italien</h5>
+               <p>
+                  Un mélange harmonieux d’espresso corsé, de lait chaud et de
+                  mousse de lait onctueuse, couronné d’une légère poudre de
+                  cacao. Ce grand classique italien est idéal pour vos matinées
+                  ou vos moments de détente. Sa texture crémeuse et son goût
+                  équilibré en font une boisson réconfortante appréciée dans le
+                  monde entier.
+               </p>
+            </div>
+            <div class="specialite">
+               <h5>Latte noisette</h5>
+               <p>
+                  Une boisson douce et veloutée à base d’espresso et de lait
+                  chaud, sublimée par un délicieux sirop de noisette. Parfait
+                  pour ceux qui aiment les cafés sucrés avec une touche
+                  gourmande, le latte noisette offre une expérience riche en
+                  arômes. Chaque gorgée révèle une parfaite harmonie entre la
+                  puissance du café et la douceur de la noisette.
+               </p>
+            </div>
+            <div class="specialite">
+               <h5>Moka au chocolat</h5>
+               <p>
+                  Le moka est une alliance irrésistible entre un espresso
+                  intense, du lait chaud et une généreuse dose de chocolat.
+                  Idéal pour les amateurs de boissons chocolatées, il est
+                  souvent agrémenté de crème fouettée pour une touche encore
+                  plus gourmande. Cette spécialité ravit petits et grands,
+                  parfaite en hiver ou lors d'une pause sucrée.
+               </p>
+            </div>
+         </div>
+         <div id="contact">
+            <p>contact : 034 49 384 03 / &copy; 2025 café</p>
+         </div>
+      </footer>
+   </body>
 </html>

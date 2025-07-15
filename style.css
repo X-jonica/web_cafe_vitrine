@@ -1,103 +1,360 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap");
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
+   margin: 0;
+   padding: 0;
+   font-family: "Montserrat", sans-serif;
 }
 
 nav {
-    display: flex;
-    flex-wrap: wrap; /*? pour que les elements s'empile en format moble */
-    justify-content: center;
-    align-items: center;
-    border-bottom: 5px solid #6f6f6f;
+   display: flex;
+   flex-wrap: wrap; /*? Oui, utilé pour l’empilement sur mobile */
+   justify-content: center;
+   align-items: center;
+   border-bottom: 5px solid #6f6f6f;
+
+   position: fixed;
+   top: 0; /* collé en haut */
+   left: 0;
+   width: 100%; /* s'étend sur toute la largeur */
+   background-color: #fff;
+   z-index: 1000;
 }
 
- /*?  justify-content: pour aligner horizontalement , */
- /*?  align-items : pour aligner verticalement , */
+/*?  justify-content: pour aligner horizontalement , */
+/*?  align-items : pour aligner verticalement , */
 
 nav h1 {
-    color: #717171;
-    font-family: 'Playfair Display', sans-serif;
-    font-size: 30px;
+   color: #717171;
+   font-family: "Playfair Display", sans-serif;
+   font-size: 30px;
 }
 
 nav .onglets {
-    margin-top: 3px;
-    margin-left: 300px;
+   margin-top: 3px;
+   margin-left: 300px;
 }
 
 nav .onglets a {
-    text-decoration: none;
-    color: #000;
-    margin-right: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #000;
+   text-decoration: none;
+   color: #000;
+   margin-right: 10px;
+   padding-bottom: 5px;
+   border-bottom: 1px solid #000;
+   transition: border-bottom 0.3s ease;
 }
 
+nav .onglets a:hover {
+    text-decoration: none;
+    border: none;
+    font-weight: 600;
+ }
+
 header div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: url('images/cafe.header.jpg');
-    background-size: cover; /*? couvrir la totalite du header*/
-    color: #fff;
-    padding: 40px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background: url("images/cafe.header.jpg");
+   background-size: cover; /*? couvrir la totalite du header*/
+   color: #fff;
+   padding: 40px;
+   margin-top: 80px;
 }
 
 header div h2 {
-    font-family: 'Playfair Display', sans-serif;
-    font-size: 50px;
+   font-family: "Playfair Display", sans-serif;
+   font-size: 50px;
 }
 
 header div h4 {
-    margin-top: -20px;
-    font-size: 20px;
-    text-align: center;
-    border-bottom: 1px solid #fff;
+   margin-top: -20px;
+   font-size: 20px;
+   text-align: center;
+   border-bottom: 1px solid #fff;
 }
 
 header div button {
-    padding: 10px 20px;
-    border: none;
-    background-color: rgba(37, 20, 20, 0.726);
-    color: #fff;
-    font-size: 20px;
-    font-family: 'Playfair Display', sans-serif;
-    outline: none;
-    cursor: pointer;
-    font-weight: 600;
-    border-radius: 3px;
+   padding: 10px 20px;
+   border: none;
+   background-color: rgba(37, 20, 20, 0.726);
+   color: #fff;
+   font-size: 20px;
+   font-family: "Playfair Display", sans-serif;
+   outline: none;
+   cursor: pointer;
+   font-weight: 600;
+   border-radius: 3px;
 }
 
-.main{
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.main {
+   margin-top: 40px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background: url("images/cafe.main.jpg");
+   background-size: cover;
+}
+
+.main h4 {
+   font-size: 30px;
+   text-align: center;
+   font-family: "Playfair Display", sans-serif;
+   color: #fff;
 }
 
 .main .content .card {
+   display: flex;
+   flex-wrap: wrap; /*? si la resolution ne le permet pas les element vont s'emplilé */
+   justify-content: center;
+   margin-bottom: 20px;
+}
+
+.main .content .card .left {
+   flex: 0 0 30%;
+   padding: 30px;
+   background-color: rgb(54, 6, 6);
+   color: #fff;
+}
+
+.main .content .card .left h3 {
+   color: beige;
+   font-size: 30px;
+}
+
+.main .content .card .left .price {
+   display: inline;
+   margin-top: 30px;
+   font-size: 30px;
+   font-family: "Playfair Display", sans-serif;
+   border-bottom: 1px solid #fff;
+   padding-bottom: 5px;
+}
+
+.main .content .card {
+   flex: 0 0 70%;
+}
+
+.main .content .card .right img {
+   width: 400px;
+   height: 300px;
+   margin-top: 5px;
+}
+
+.position {
+   width: 100%;
+   margin-top: -20px;
+}
+
+.position h4 {
+   font-size: 35px;
+   text-align: center;
+   font-family: "Playfair Display", sans-serif;
+   color: rgb(99, 11, 11);
+}
+
+.position .map {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.position .map iframe {
+   width: 900px;
+   height: 400px;
+   margin: 0 auto;
+}
+
+footer {
+   margin-top: 40px;
+   border-top: 5px solid #6f6f6f;
+   background-color: rgb(27, 9, 9);
+   color: #fff;
+   padding: 30px 200px;
+}
+
+footer h4 {
+   font-size: 35px;
+   font-family: "Playfair Display", sans-serif;
+   color: #fff;
+   border-bottom: 1px solid #fff;
+   width: 250px;
+   padding-bottom: 5px;
+}
+
+footer .specialites {
+   margin-top: -10px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+footer .specialites .specialite {
+   padding: 10px;
+   margin-right: 10px;
+}
+
+footer .specialites .specialite h5 {
+   font-size: 20px;
+   font-family: "Playfair Display", sans-serif;
+   color: #fff;
+   margin-top: -30px;
+}
+
+footer .specialites .specialite p {
+   max-width: 280px;
+   margin-top: -20px;
+}
+
+footer #contact {
+   color: beige;
+   font-size: 25px;
+   font-weight: 200;
+   text-align: center;
+}
+
+
+@media screen and (max-width : 1200px) { 
+    footer {
+        padding: 20px 20px;
+     }
+
+     footer .specialites {
+        margin-top: -10px;
+        display: flex;
+        justify-content: center;
+     }
+     
+     footer .specialites {
+        margin-top: -10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+     }
+     
+     footer .specialites .specialite h5 {
+        font-size: 18px;
+        font-family: "Playfair Display", sans-serif;
+        color: #fff;
+        margin-top: -30px;
+     }
+     
+     footer .specialites .specialite p {
+        max-width: 250px;
+        margin-top: -20px;
+     }
+     
+}
+
+@media screen and (max-width: 900px) {
+    footer {
+        padding: 10px 20px;
+     }
+  
+     footer h4 {
+        margin: 20px auto;
+        text-align: center;
+     }
+  
+     footer .specialites .specialite {
+        padding: 20px;
+        margin-top: 10px;
+     }
+
+     footer .specialites .specialite p{
+        font-size: 15px;
+        max-width: 100%;
+     }
+  
+     footer #contact {
+        font-size: 15px;
+     }
+}
+
+@media screen and (max-width: 680px) {
+   /*? Agiir si taille d ecran inferieur a 680px */
+   nav {
+      display: flex;
+      flex-wrap: wrap; /*? pour que les elements s'empile en format moble */
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+      position: fixed;
+      /* background-color: #fff; */
+   }
+
+   nav h1 {
+      display: none;
+   }
+
+   nav .onglets {
     display: flex;
-    flex-wrap: wrap; /*? si la resolution ne le permet pas les element vont s'emplilé */
+    flex-wrap: wrap;
+      margin-left: 0px;
+      margin-bottom: 20px;
+      font-size: 15px;
+   }
+
+   header div {
+      margin-top: 0px;
+   }
+
+   header div h4 {
+      border: none;
+   }
+
+   .main .content .card .left {
+      flex: 0 0 70%;
+      border-radius: 10px;
+      z-index: 1;
+   }
+
+   .main .content .card .right img {
+      width: 300px;
+      height: 200px;
+      margin-top: -10px;
+      z-index: -1;
+   }
+
+   footer {
+      padding: 10px 50px;
+   }
+
+   footer h4 {
+      margin: 20px auto;
+      text-align: center;
+   }
+
+   footer .specialites .specialite {
+      padding: 20px;
+      margin-top: 10px;
+   }
+
+   footer #contact {
+      font-size: 15px;
+   }
 }
 
-.main .content .card .right img{
-    width: 400px;
-    height: 300px;
-    margin-top: 5px;
-}
+@media screen and (max-width: 400px) {
+    footer {
+        padding: 10px 10px;
+     }
+  
+     footer h4 {
+        margin: 20px auto;
+        text-align: center;
+     }
+  
+     footer .specialites .specialite {
+        padding: 20px;
+        margin-top: 10px;
+     }
 
-@media screen and (max-width: 680px){  /*? Agiir si taille d ecran nnferieur a 680px */
-    nav .onglets {
-        margin-left: 0px;
-        margin-bottom: 20px;
-    }
-
-    header div h4 {
-        border: none;
-    }
-
+     footer .specialites .specialite p{
+        font-size: 15px;
+     }
+  
+     footer #contact {
+        font-size: 15px;
+     }
 }
