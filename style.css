@@ -1,360 +1,787 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap");
 
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Styles de base */
 body {
-   margin: 0;
-   padding: 0;
-   font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
 }
 
+/* Animation pour le nav */
 nav {
-   display: flex;
-   flex-wrap: wrap; /*? Oui, utilé pour l’empilement sur mobile */
-   justify-content: center;
-   align-items: center;
-   border-bottom: 5px solid #6f6f6f;
-
-   position: fixed;
-   top: 0; /* collé en haut */
-   left: 0;
-   width: 100%; /* s'étend sur toute la largeur */
-   background-color: #fff;
-   z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid #6f6f6f;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  animation: fadeIn 0.8s ease-out;
 }
-
-/*?  justify-content: pour aligner horizontalement , */
-/*?  align-items : pour aligner verticalement , */
 
 nav h1 {
-   color: #717171;
-   font-family: "Playfair Display", sans-serif;
-   font-size: 30px;
+  color: #717171;
+  font-family: "Playfair Display", sans-serif;
+  font-size: 30px;
 }
 
 nav .onglets {
-   margin-top: 10px;
-   margin-left: 300px;
+  margin-top: 10px;
+  margin-left: 300px;
 }
 
 nav .onglets a {
-   text-decoration: none;
-   color: #000;
-   margin-right: 10px;
-   padding-bottom: 5px;
-   border-bottom: 1px solid #000;
-   transition: border-bottom 0.3s ease;
+  text-decoration: none;
+  color: #000;
+  margin-right: 15px;
+  padding: 8px 0;
+  position: relative;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Effet de soulignement animé */
+nav .onglets a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #6f6f6f;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: 0;
 }
 
 nav .onglets a:hover {
-    text-decoration: none;
-    border: none;
-    font-weight: 600;
- }
+  color: #6f6f6f;
+  transform: translateY(-3px);
+}
 
+nav .onglets a:hover::before {
+  width: 100%;
+  opacity: 1;
+}
+
+/* Effet de "rebond" subtil */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+nav .onglets a:active {
+  animation: bounce 0.4s ease;
+}
+
+/* Animation au survol pour le texte */
+nav .onglets a span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+nav .onglets a:hover span {
+  transform: scale(1.05);
+}
+
+/* Ombre portée subtile */
+nav .onglets a:hover {
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Transition plus douce pour la couleur */
+nav .onglets a {
+  transition: color 0.4s ease,
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    text-shadow 0.3s ease;
+}
+
+/* Animation pour le header */
 header div {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   background: url("images/cafe.header.jpg");
-   background-size: cover; /*? couvrir la totalite du header*/
-   color: #fff;
-   padding: 40px;
-   margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url("images/cafe.header.jpg");
+  background-size: cover;
+  color: #fff;
+  padding: 40px;
+  margin-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+header div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
 }
 
 header div h2 {
-   font-family: "Playfair Display", sans-serif;
-   font-size: 50px;
+  font-family: "Playfair Display", sans-serif;
+  font-size: 50px;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1s ease-out, float 3s ease-in-out infinite;
 }
 
 header div h4 {
-   margin-top: -20px;
-   font-size: 20px;
-   text-align: center;
-   border-bottom: 1px solid #fff;
+  margin-top: -20px;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1.2s ease-out;
 }
 
 header div button {
-   padding: 10px 20px;
-   border: none;
-   background-color: rgba(37, 20, 20, 0.726);
-   color: #fff;
-   font-size: 20px;
-   font-family: "Playfair Display", sans-serif;
-   outline: none;
-   cursor: pointer;
-   font-weight: 600;
-   border-radius: 3px;
+  padding: 10px 20px;
+  border: none;
+  background-color: rgba(37, 20, 20, 0.726);
+  color: #fff;
+  font-size: 20px;
+  font-family: "Playfair Display", sans-serif;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 3px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  animation: fadeIn 1.4s ease-out;
 }
 
+header div button:hover {
+  background-color: rgba(37, 20, 20, 0.9);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+header div button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations pour les cartes de café */
 .main {
-   margin-top: 40px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   background: url("images/cafe.main.jpg");
-   background-size: cover;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url("images/cafe.main.jpg");
+  background-size: cover;
 }
 
 .main h4 {
-   font-size: 30px;
-   text-align: center;
-   font-family: "Playfair Display", sans-serif;
-   color: #fff;
+  font-size: 30px;
+  text-align: center;
+  font-family: "Playfair Display", sans-serif;
+  color: #fff;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.main .content {
+  width: 100%;
 }
 
 .main .content .card {
-   display: flex;
-   flex-wrap: wrap; /*? si la resolution ne le permet pas les element vont s'emplilé */
-   justify-content: center;
-   margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  opacity: 0;
+}
+
+.main .content .card.visible {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.main .content .card:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.main .content .card:nth-child(even) {
+  animation-delay: 0.3s;
 }
 
 .main .content .card .left {
-   flex: 0 0 30%;
-   padding: 30px;
-   background-color: rgb(54, 6, 6);
-   color: #fff;
+  flex: 0 0 30%;
+  padding: 30px;
+  background-color: rgb(54, 6, 6);
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+.main .content .card .left:hover {
+  transform: translateX(5px);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .main .content .card .left h3 {
-   color: beige;
-   font-size: 30px;
+  color: beige;
+  font-size: 30px;
 }
 
 .main .content .card .left .price {
-   display: inline;
-   margin-top: 30px;
-   font-size: 30px;
-   font-family: "Playfair Display", sans-serif;
-   border-bottom: 1px solid #fff;
-   padding-bottom: 5px;
+  display: inline;
+  margin-top: 30px;
+  font-size: 30px;
+  font-family: "Playfair Display", sans-serif;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
 }
 
 .main .content .card {
-   flex: 0 0 70%;
+  flex: 0 0 70%;
 }
 
 .main .content .card .right img {
-   width: 400px;
-   height: 300px;
-   margin-top: 5px;
+  width: 400px;
+  height: 300px;
+  margin-top: 5px;
+  transition: all 0.5s ease;
+  border-radius: 5px;
 }
 
+.main .content .card .right img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Bienfaits */
+.benefits {
+  background: linear-gradient(135deg, #f9f5f0 0%, #e8e1d9 100%);
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefits h4 {
+  font-size: 35px;
+  text-align: center;
+  font-family: "Playfair Display", sans-serif;
+  color: rgb(99, 11, 11);
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.benefits h4::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: #6f4e37;
+  margin: 15px auto;
+}
+
+.benefits-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  width: 300px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.benefit-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: #6f4e37;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-card:hover::before {
+  transform: scaleX(1);
+}
+
+.benefit-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(111, 78, 55, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+  background: rgba(111, 78, 55, 0.2);
+  transform: rotate(15deg) scale(1.1);
+}
+
+.benefit-card h3 {
+  color: #6f4e37;
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: "Playfair Display", sans-serif;
+}
+
+.benefit-card p {
+  color: #555;
+  text-align: center;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.coffee-facts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 60px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fact-item {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.fact-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fact-number {
+  display: block;
+  font-size: 42px;
+  font-weight: 700;
+  color: #6f4e37;
+  font-family: "Playfair Display", sans-serif;
+  margin-bottom: 5px;
+}
+
+.fact-text {
+  display: block;
+  font-size: 16px;
+  color: #555;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+/* Wave dividers */
+.wave-divider-top,
+.wave-divider-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-divider-top {
+  top: -1px;
+}
+
+.wave-divider-bottom {
+  bottom: -1px;
+  transform: rotate(180deg);
+}
+
+.wave-divider-top svg,
+.wave-divider-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 50px;
+}
+
+.wave-divider-top .shape-fill,
+.wave-divider-bottom .shape-fill {
+  fill: #ffffff;
+}
+
+/* Animation pour la section de localisation */
 .position {
-   width: 100%;
-   margin-top: -20px;
+  width: 100%;
+  margin-top: -20px;
 }
 
 .position h4 {
-   font-size: 35px;
-   text-align: center;
-   font-family: "Playfair Display", sans-serif;
-   color: rgb(99, 11, 11);
+  font-size: 35px;
+  text-align: center;
+  font-family: "Playfair Display", sans-serif;
+  color: rgb(99, 11, 11);
+  animation: fadeIn 0.8s ease-out;
 }
 
 .position .map {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+.position .map.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .position .map iframe {
-   width: 900px;
-   height: 400px;
-   margin: 0 auto;
+  width: 900px;
+  height: 400px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
 }
 
+.position .map iframe:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: scale(1.01);
+}
+
+/* Animations pour le footer */
 footer {
-   margin-top: 40px;
-   border-top: 5px solid #6f6f6f;
-   background-color: rgb(27, 9, 9);
-   color: #fff;
-   padding: 30px 200px;
+  margin-top: 40px;
+  border-top: 5px solid #6f6f6f;
+  background-color: rgb(27, 9, 9);
+  color: #fff;
+  padding: 30px 200px;
 }
 
 footer h4 {
-   font-size: 35px;
-   font-family: "Playfair Display", sans-serif;
-   color: #fff;
-   border-bottom: 1px solid #fff;
-   width: 250px;
-   padding-bottom: 5px;
+  font-size: 35px;
+  font-family: "Playfair Display", sans-serif;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  width: 250px;
+  padding-bottom: 5px;
+  animation: slideInFromLeft 0.8s ease-out;
 }
 
 footer .specialites {
-   margin-top: -10px;
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
+  margin-top: -10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 footer .specialites .specialite {
-   padding: 10px;
-   margin-right: 10px;
+  padding: 10px;
+  margin-right: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+footer .specialites .specialite.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 footer .specialites .specialite h5 {
-   font-size: 20px;
-   font-family: "Playfair Display", sans-serif;
-   color: #fff;
-   margin-top: -30px;
+  font-size: 20px;
+  font-family: "Playfair Display", sans-serif;
+  color: #fff;
+  margin-top: -30px;
 }
 
 footer .specialites .specialite p {
-   max-width: 280px;
-   margin-top: -20px;
+  max-width: 280px;
+  margin-top: -20px;
 }
 
 footer #contact {
-   color: beige;
-   font-size: 25px;
-   font-weight: 200;
-   text-align: center;
+  color: beige;
+  font-size: 25px;
+  font-weight: 200;
+  text-align: center;
+  animation: fadeIn 1s ease-out 0.5s both;
 }
 
+/* Effet de vague animée pour séparer les sections */
+.wave-divider {
+  position: relative;
+  height: 50px;
+  overflow: hidden;
+  margin: 20px 0;
+}
 
-@media screen and (max-width : 1200px) { 
-    footer {
-        padding: 20px 20px;
-     }
+.wave-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23360909" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23360909" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23360909"/></svg>');
+  background-size: cover;
+  animation: wave 10s linear infinite;
+}
 
-     footer .specialites {
-        margin-top: -10px;
-        display: flex;
-        justify-content: center;
-     }
-     
-     footer .specialites {
-        margin-top: -10px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-     }
-     
-     footer .specialites .specialite h5 {
-        font-size: 18px;
-        font-family: "Playfair Display", sans-serif;
-        color: #fff;
-        margin-top: -30px;
-     }
-     
-     footer .specialites .specialite p {
-        max-width: 250px;
-        margin-top: -20px;
-     }
-     
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  footer {
+    padding: 20px 20px;
+  }
+
+  footer .specialites {
+    margin-top: -10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  footer .specialites {
+    margin-top: -10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  footer .specialites .specialite h5 {
+    font-size: 18px;
+    font-family: "Playfair Display", sans-serif;
+    color: #fff;
+    margin-top: -30px;
+  }
+
+  footer .specialites .specialite p {
+    max-width: 250px;
+    margin-top: -20px;
+  }
 }
 
 @media screen and (max-width: 900px) {
-    footer {
-        padding: 10px 20px;
-     }
-  
-     footer h4 {
-        margin: 20px auto;
-        text-align: center;
-     }
-  
-     footer .specialites .specialite {
-        padding: 20px;
-        margin-top: 10px;
-     }
+  footer {
+    padding: 10px 20px;
+  }
 
-     footer .specialites .specialite p{
-        font-size: 15px;
-        max-width: 100%;
-     }
-  
-     footer #contact {
-        font-size: 15px;
-     }
+  footer h4 {
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  footer .specialites .specialite {
+    padding: 20px;
+    margin-top: 10px;
+  }
+
+  footer .specialites .specialite p {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  footer #contact {
+    font-size: 15px;
+  }
 }
 
 @media screen and (max-width: 680px) {
-   /*? Agiir si taille d ecran inferieur a 680px */
-   nav {
-      display: flex;
-      flex-wrap: wrap; /*? pour que les elements s'empile en format moble */
-      justify-content: center;
-      align-items: center;
-      padding: 0 10px;
-      position: fixed;
-      /* background-color: #fff; */
-   }
+  /*? Agiir si taille d ecran inferieur a 680px */
+  nav {
+    display: flex;
+    flex-wrap: wrap; /*? pour que les elements s'empile en format moble */
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    position: fixed;
+  }
 
-   nav h1 {
-      display: none;
-   }
+  nav h1 {
+    display: none;
+  }
 
-   nav .onglets {
+  nav .onglets {
     display: flex;
     flex-wrap: wrap;
-      margin-left: 0px;
-      margin-bottom: 20px;
-      font-size: 15px;
-   }
+    margin-left: 0px;
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
 
-   header div {
-      margin-top: 0px;
-   }
+  header div {
+    margin-top: 0px;
+  }
 
-   header div h4 {
-      border: none;
-   }
+  header div h4 {
+    border: none;
+  }
 
-   .main .content .card .left {
-      flex: 0 0 70%;
-      border-radius: 10px;
-      z-index: 1;
-   }
+  .main .content .card .left {
+    flex: 0 0 70%;
+    border-radius: 10px;
+    z-index: 1;
+  }
 
-   .main .content .card .right img {
-      width: 300px;
-      height: 200px;
-      margin-top: -10px;
-      z-index: -1;
-   }
+  .main .content .card .right img {
+    width: 300px;
+    height: 200px;
+    margin-top: -10px;
+    z-index: -1;
+  }
 
-   footer {
-      padding: 10px 50px;
-   }
+  .benefits-container {
+    flex-direction: column;
+    align-items: center;
+  }
 
-   footer h4 {
-      margin: 20px auto;
-      text-align: center;
-   }
+  .benefit-card {
+    width: 80%;
+  }
 
-   footer .specialites .specialite {
-      padding: 20px;
-      margin-top: 10px;
-   }
+  .coffee-facts {
+    flex-direction: column;
+    gap: 30px;
+  }
 
-   footer #contact {
-      font-size: 15px;
-   }
+  .wave-divider-bottom {
+    display: none;
+  }
+
+  footer {
+    padding: 10px 50px;
+  }
+
+  footer h4 {
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  footer .specialites .specialite {
+    padding: 20px;
+    margin-top: 10px;
+  }
+
+  footer #contact {
+    font-size: 15px;
+  }
 }
 
 @media screen and (max-width: 400px) {
-    footer {
-        padding: 10px 10px;
-     }
-  
-     footer h4 {
-        margin: 20px auto;
-        text-align: center;
-     }
-  
-     footer .specialites .specialite {
-        padding: 20px;
-        margin-top: 10px;
-     }
+  footer {
+    padding: 10px 10px;
+  }
 
-     footer .specialites .specialite p{
-        font-size: 15px;
-     }
-  
-     footer #contact {
-        font-size: 15px;
-     }
+  footer h4 {
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  footer .specialites .specialite {
+    padding: 20px;
+    margin-top: 10px;
+  }
+
+  footer .specialites .specialite p {
+    font-size: 15px;
+  }
+
+  footer #contact {
+    font-size: 15px;
+  }
 }
